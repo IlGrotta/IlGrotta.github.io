@@ -6,7 +6,11 @@ set /p COMMIT_MSG="Inserisci il messaggio del commit: "
 
 REM Integra eventuali modifiche remote su gh-pages in public
 call git fetch origin gh-pages
-call git subtree pull --prefix public origin gh-pages
+IF EXIST public (
+    call git subtree pull --prefix public origin gh-pages --allow-unrelated-histories
+) ELSE (
+    call git subtree add --prefix public origin gh-pages
+)
 
 REM Rigenera la cartella public con Hugo (sovrascrive i vecchi file)
 hugo
@@ -22,9 +26,8 @@ call git subtree push --prefix public origin gh-pages
 REM Elimina la cartella public dalla working directory e dall'indice
 rmdir /s /q public
 call git rm -r --cached public
-call git commit -m "%COMMIT_MSG%"
+call git commit -m "Rimuovi public dopo deploy"
 call git push origin main
 
 echo Deploy completato!
 pause
-
