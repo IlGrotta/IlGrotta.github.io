@@ -6,7 +6,7 @@ set /p COMMIT_MSG="Inserisci il messaggio del commit: "
 
 REM Integra eventuali modifiche remote su gh-pages in public
 call git fetch origin gh-pages
-call git subtree pull --prefix public origin gh-pages --allow-unrelated-histories
+call git subtree pull --prefix public origin gh-pages
 
 REM Rigenera la cartella public con Hugo (sovrascrive i vecchi file)
 hugo
