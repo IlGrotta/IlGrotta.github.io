@@ -4,6 +4,13 @@ REM Script di deploy Hugo su gh-pages e pulizia public dalla main branch
 REM Chiedi il messaggio di commit
 set /p COMMIT_MSG="Inserisci il messaggio del commit: "
 
+REM Integra eventuali modifiche remote su gh-pages in public
+call git fetch origin gh-pages
+call git subtree pull --prefix public origin gh-pages --allow-unrelated-histories
+
+REM Rigenera la cartella public con Hugo (sovrascrive i vecchi file)
+hugo
+
 REM Aggiungi tutto (incluso public) e committa su main
 call git add .
 call git commit -m "Public: %COMMIT_MSG%"

@@ -1,6 +1,6 @@
 +++
 authors = ["Lone Coder"]
-title = "AMMM"
+title = "Exzample"
 date = "2023-07-05"
 description = "Lorem Ipsum Dolor Si Amet"
 tags = [
