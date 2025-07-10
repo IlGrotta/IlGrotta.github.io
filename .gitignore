@@ -19,5 +19,4 @@ Gemfile.lock
 /.idea/
 
 .hugo_build.lock
-/themes/hugo-coder/
 /resources/_gen/assets/scss/
